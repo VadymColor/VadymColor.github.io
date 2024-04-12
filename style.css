@@ -110,7 +110,7 @@ transform: rotate(360deg);
   position: fixed;
   top: 1vh;
   width: 100vw;
-  font-family: 'KyivTypeSans', sans-serif;
+  font-family: 'KyivTypeSansRegular', sans-serif;
   font-size: 9vw; /* Adjust this value to make the text as big as you want */
   z-index: 15;
   text-align: center;
