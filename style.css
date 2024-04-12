@@ -75,8 +75,8 @@ transform: rotate(360deg);
 #animation1 {
   top: 50%;
   left: 50%;
-  width: 80vw;
-  height: 80vh;
+  width: 60vw;
+  height: 60vh;
   transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
   position: fixed;
   z-index: 6;
