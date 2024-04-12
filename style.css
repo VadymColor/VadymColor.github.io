@@ -111,10 +111,10 @@ transform: rotate(360deg);
   top: 1vh;
   width: 100vw;
   font-family: 'KyivTypeSansRegular', sans-serif;
-  font-size: 9vw; /* Adjust this value to make the text as big as you want */
+  font-size: 9vh; /* Adjust this value to make the text as big as you want */
   z-index: 15;
   text-align: center;
-  color:aliceblue;
+  color: aliceblue;
   font-weight: 9000; 
   opacity: 20%;
   /*filter: blur(5px);*/
