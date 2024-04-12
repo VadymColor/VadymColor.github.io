@@ -1,4 +1,6 @@
 body {
+  position: relative;
+  overflow: hidden;
   margin:0 ;
   padding:0 ;
 }
@@ -48,14 +50,73 @@ transform: rotate(360deg);
   }
 }
 
+@font-face {
+  font-family: 'KyivTypeSans';
+  src: url(./fonts/KyivTypeSans-Black2.otf) format('opentype');
+  font-weight: 900;
+  backdrop-filter: blur(20s);
+}
+
+@font-face {
+  font-family: 'KyivTypeSansRegular';
+  src: url(./fonts/KyivTypeSans-Regular.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#movingbg1 {
+	position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /*transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
+	z-index: 5;
+}
+
+#animation1 {
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 80vh;
+  transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
+  position: fixed;
+  z-index: 6;
+}
+
 #movingbg {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #ce20f5);
 	background-size: 400% 400%;
 	animation: gradient 35s ease infinite;
 	height: 100vh;
-  width: 100hw;
-  z-index: -1;
-  filter: blur(0px);
+	width: 100hw;
+	z-index: -1;
+}
+
+#movingbg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #ce20f5);
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+  filter: blur(10px);
+  z-index: -13;
+}
+
+#divblock {
+  position: fixed;
+  top: 1vh;
+  width: 100vw;
+  font-family: 'KyivTypeSans', sans-serif;
+  font-size: 9vw; /* Adjust this value to make the text as big as you want */
+  z-index: 15;
+  text-align: center;
+  color:aliceblue;
+  font-weight: 9000; 
+  opacity: 20%;
+  /*filter: blur(5px);*/
 }
 
 .gradients-container {
@@ -129,4 +190,50 @@ transform: rotate(360deg);
   opacity: 1;
   transform-origin: calc(50% - 30vh);
   animation: movelnCircle 30s ease infinite;
+}
+
+#linkblock {
+  position: fixed;
+  right: 10vw;
+  bottom: 0;
+  width: 100vw;
+  text-align: right;
+  z-index: 16;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'KyivTypeSans', sans-serif;
+  font-size: 3vh;
+  color: rgb(187, 231, 233);
+  font-weight: 5000;
+  opacity: 50%;
+}
+
+#linkblock a {
+  font-family: 'KyivTypeSansRegular', sans-serif;
+  text-decoration: none;
+  line-height: 1.8;
+  margin: 0 1em;
+  transition: color 0.3s ease, text-shadow 0.5s ease, letter-spacing 0.8s ease;
+}
+
+#linkblock a:hover {
+  text-shadow: black 5px 5px 10px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 4px;
+}
+
+#mouseFollower {
+  position: absolute;
+  width: 30vh;
+  height: 30vh;
+  background: rgb(120, 233, 150);
+  border-radius: 50%;
+  pointer-events: none;
+  /*mix-blend-mode:color-burn;*/
+  transition: transform 0.3s ease-out;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  filter: blur(10vh);
+  opacity: 0.6;
 }
