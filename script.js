@@ -28,9 +28,9 @@ document.addEventListener('mousemove', function(event) {
     var deltaX = (mouseX - centerX) / centerX;
     var deltaY = (mouseY - centerY) / centerY;
 
-    var rotationY = deltaX * 20; // Change the multiplier for more or less rotation
-    var rotationX = deltaY * -20; // Change the multiplier for more or less rotation
-
+    var rotationY = deltaX * 30; // Change the multiplier for more or less rotation
+    var rotationX = deltaY * -30; // Change the multiplier for more or less rotation
+    document.getElementById('animation1').style.transition = 'transform 0.5s ease';
     animation1.style.transform = 'perspective(500px) rotateY(' + rotationY + 'deg) rotateX(' + rotationX + 'deg)';
 });
 

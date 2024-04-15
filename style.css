@@ -73,14 +73,22 @@ transform: rotate(360deg);
 }
 
 #animation1 {
-  top: 40%;
-  left: 50%;
+  top: 25%;
+  left: 25%;
   width: 60vh;
   height: 60vh;
   max-width: 80%;
-  transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
+  /*transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
   position: fixed;
   z-index: 6;
+}
+
+@media screen and (orientation: portrait) {
+  #animation1 {
+    /* Set the desired position for mobile or portrait view here */
+    top: 5%;
+    left: 10%;
+  }
 }
 
 #movingbg {
