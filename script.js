@@ -1,4 +1,9 @@
-        var animation = bodymovin.loadAnimation({
+window.onload = function() {
+    var preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+  };
+
+var animation = bodymovin.loadAnimation({
             container: document.getElementById('animation1'),
             renderer: 'svg',
             loop: true,
@@ -40,3 +45,4 @@ document.addEventListener('mousemove', function(event) {
         document.addEventListener('mousemove', e => {
           follower.style.transform = `translate(${e.pageX - followerRect.width / 2}px, ${e.pageY - followerRect.height / 2}px)`;
         });
+
