@@ -233,6 +233,7 @@ transform: rotate(360deg);
 
 #linkblock a {
   font-family: 'KyivTypeSansRegular', sans-serif;
+  color:azure;
   text-decoration: none;
   line-height: 1.8;
   margin: 0 1em;
