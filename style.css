@@ -88,9 +88,9 @@ transform: rotate(360deg);
 #animation1 {
   top: 25%;
   left: 25%;
-  /*width: 60vh;
-  height: 60vh;*/
-  max-width: 100%;
+  width: 60vh;
+  height: 60vh;
+  max-width: 80%;
   /*transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
   position: fixed;
   z-index: 6;
