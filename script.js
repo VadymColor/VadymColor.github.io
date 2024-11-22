@@ -10,6 +10,7 @@ window.onload = function() {
 
     // Track loaded images
     let loadedImages = 0;
+    let animationStarted = false;
 
     // Preload all images
     const images = [];
@@ -17,10 +18,11 @@ window.onload = function() {
         const img = new Image();
         img.onload = () => {
             loadedImages++;
-            if (loadedImages === totalFrames + 1) {
-                // All images loaded, hide preloader
+            // Start animation when 90 images are loaded
+            if (loadedImages === 90 && !animationStarted) {
                 preloader.style.display = 'none';
                 startAnimation();
+                animationStarted = true;
             }
         };
         const frameNumber = i.toString().padStart(5, '0');
