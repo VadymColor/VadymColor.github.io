@@ -99,7 +99,7 @@ transform: rotate(360deg);
 @media screen and (orientation: portrait) {
   #animation1 {
     /* Set the desired position for mobile or portrait view here */
-    top: 5%;
+    top: 10%;
     left: 10%;
   }
 }
@@ -244,6 +244,16 @@ transform: rotate(360deg);
   text-shadow: black 5px 5px 10px;
   color: rgb(255, 255, 255);
   letter-spacing: 4px;
+}
+
+@media screen and (orientation: portrait) {
+  #linkblock {
+    font-size: 2.5vh;
+  }
+  
+  #linkblock a {
+    margin: 0 0.5em;
+  }
 }
 
 #mouseFollower {
