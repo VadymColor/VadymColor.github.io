@@ -99,7 +99,7 @@ transform: rotate(360deg);
 @media screen and (orientation: portrait) {
   #animation1 {
     /* Set the desired position for mobile or portrait view here */
-    top: 10%;
+    top: 7%;
     left: 10%;
   }
 }
@@ -248,7 +248,7 @@ transform: rotate(360deg);
 
 @media screen and (orientation: portrait) {
   #linkblock {
-    font-size: 2.5vh;
+    font-size: 2.25vh;
   }
   
   #linkblock a {
