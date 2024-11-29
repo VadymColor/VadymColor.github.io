@@ -260,7 +260,7 @@ transform: rotate(360deg);
 
 @media screen and (orientation: portrait) {
   #linkblock {
-    font-size: 2.25vh;
+    font-size: 2.4vh;
   }
   
   #linkblock a {
