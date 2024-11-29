@@ -101,9 +101,8 @@ transform: rotate(360deg);
 }
 
 .loading-text {
-  color: #757575;
-  font-family: 'KyivTypeSans';
-  src: url(./fonts/KyivTypeSans-Black2.otf) format('opentype');
+  color: #8e8e8e;
+  font-family: 'KyivTypeSans-Thin', sans-serif;
   font-size: 32px;
   margin-top: 50px;
 }
@@ -149,10 +148,10 @@ transform: rotate(360deg);
     top: 35vh;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 95vw;
-    height: 95vw;
     max-width: 100%;
     max-height: 100%;
+    width: 80vw;
+    height: 80vw;
   }
 }
 
