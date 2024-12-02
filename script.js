@@ -57,7 +57,7 @@ window.onload = function() {
             const img = new Image();
             img.onload = () => {
                 loadedImages++;
-                if (loadedImages === 480 && !animationStarted) {
+                if (loadedImages === 180 && !animationStarted) {
                     preloader.style.display = 'none';
                     if (!shouldUseLottie()) {
                         startImageAnimation();
