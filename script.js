@@ -36,7 +36,7 @@ window.onload = function() {
     }
 
     // Initialize image sequence
-    const totalFrames = 598;
+    const totalFrames = 599;
     const images = [];
     let currentFrame = 0;
     let animationInterval = null;
