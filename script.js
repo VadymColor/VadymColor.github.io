@@ -41,6 +41,18 @@ window.onload = function() {
     let currentFrame = 0;
     let animationInterval = null;
 
+    /**
+     * Initializes the image sequence animation.
+     * 
+     * This function clears the animation container, destroys any existing Lottie animation,
+     * and loads a sequence of images to be used in the animation. Once a specified number
+     * of images are loaded, it hides the preloader and starts the image animation if Lottie
+     * animation is not used.
+     * 
+     * @global
+     * @function
+     * @name initImageSequence
+     */
     function initImageSequence() {
         // Clear container
         animation1.innerHTML = '';
@@ -91,7 +103,7 @@ window.onload = function() {
             if (images[currentFrame]) {
                 images[currentFrame].style.display = 'none';
             }
-            currentFrame = (currentFrame + 1) % (totalFrames + 1);
+            currentFrame = (currentFrame + 1) % totalFrames;
             if (images[currentFrame]) {
                 images[currentFrame].style.display = 'block';
             }
