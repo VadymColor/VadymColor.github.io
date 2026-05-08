@@ -1,11 +1,27 @@
 window.onload = function() {
-    var preloader = document.getElementById('preloader');
+    // var preloader = document.getElementById('preloader');
     var animation1 = document.getElementById('animation1');
     animation1.innerHTML = ''; // Clear any existing content
 
     // Function to check if we should use Lottie animation
     function shouldUseLottie() {
         return window.innerWidth <= 500;
+    }
+
+    function scheduleLazyLoad(task) {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(task, { timeout: 250 });
+        } else {
+            setTimeout(task, 150);
+        }
+    }
+
+    function showAnimationContainer() {
+        animation1.classList.add('visible');
+    }
+
+    function hideAnimationContainer() {
+        animation1.classList.remove('visible');
     }
 
     // Initialize Lottie animation
@@ -15,23 +31,24 @@ window.onload = function() {
             lottieAnim.destroy();
         }
         animation1.innerHTML = ''; // Clear any existing content
+        const animationPath = animation1.dataset.src || 'Flowerrr.json';
         lottieAnim = lottie.loadAnimation({
             container: animation1,
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'Flowerrr.json'
+            path: animationPath
         });
 
-        // Hide preloader once Lottie is loaded
         lottieAnim.addEventListener('DOMLoaded', function() {
-            preloader.style.display = 'none';
+            // preloader.style.display = 'none';
+            showAnimationContainer();
         });
 
-        // Handle any loading error
         lottieAnim.addEventListener('error', function() {
             console.error('Error loading Lottie animation');
-            preloader.style.display = 'none';
+            // preloader.style.display = 'none';
+            showAnimationContainer();
         });
     }
 
@@ -41,50 +58,51 @@ window.onload = function() {
     let currentFrame = 0;
     let animationInterval = null;
 
-    /**
-     * Initializes the image sequence animation.
-     * 
-     * This function clears the animation container, destroys any existing Lottie animation,
-     * and loads a sequence of images to be used in the animation. Once a specified number
-     * of images are loaded, it hides the preloader and starts the image animation if Lottie
-     * animation is not used.
-     * 
-     * @global
-     * @function
-     * @name initImageSequence
-     */
+    function assignImageSrcs() {
+        images.forEach(img => {
+            if (!img.src) {
+                img.src = img.dataset.src;
+            }
+        });
+    }
+
     function initImageSequence() {
-        // Clear container
         animation1.innerHTML = '';
         if (lottieAnim) {
             lottieAnim.destroy();
             lottieAnim = null;
         }
 
-        // Load images
         let loadedImages = 0;
         let animationStarted = false;
+        const requiredLoadedFrames = Math.min(480, totalFrames + 1);
 
         for (let i = 0; i <= totalFrames; i++) {
             const img = new Image();
             img.onload = () => {
                 loadedImages++;
-                if (loadedImages === 480 && !animationStarted) {
-                    preloader.style.display = 'none';
+                if (loadedImages >= requiredLoadedFrames && !animationStarted) {
+                    // preloader.style.display = 'none';
                     if (!shouldUseLottie()) {
                         startImageAnimation();
                         animationStarted = true;
+                        showAnimationContainer();
                     }
                 }
             };
             img.onerror = () => {
                 loadedImages++;
-                if (loadedImages === 90) {
-                    preloader.style.display = 'none';
+                if (loadedImages >= requiredLoadedFrames && !animationStarted) {
+                    // preloader.style.display = 'none';
+                    if (!shouldUseLottie()) {
+                        startImageAnimation();
+                        animationStarted = true;
+                        showAnimationContainer();
+                    }
                 }
             };
             const frameNumber = i.toString().padStart(5, '0');
-            img.src = `images/flower${frameNumber}.png`;
+            img.dataset.src = `images/flower${frameNumber}.png`;
             img.style.display = 'none';
             img.style.width = '100%';
             img.style.height = '100%';
@@ -92,6 +110,8 @@ window.onload = function() {
             animation1.appendChild(img);
             images.push(img);
         }
+
+        assignImageSrcs();
     }
 
     function startImageAnimation() {
@@ -118,7 +138,7 @@ window.onload = function() {
         let targetRotationY = 1;
         let currentRotationX = 0;
         let currentRotationY = 0;
-        
+
         animation1.style.transformStyle = 'preserve-3d';
         animation1.style.perspective = '1000px';
 
@@ -154,11 +174,11 @@ window.onload = function() {
         resizeTimeout = setTimeout(function() {
             if (shouldUseLottie()) {
                 if (!lottieAnim) {
-                    initLottie();
+                    scheduleLazyLoad(initLottie);
                 }
             } else {
                 if (!images.length) {
-                    initImageSequence();
+                    scheduleLazyLoad(initImageSequence);
                 } else if (!animationInterval) {
                     startImageAnimation();
                 }
@@ -166,17 +186,17 @@ window.onload = function() {
         }, 250);
     });
 
-    // Initialize based on current screen size
+    // Initialize based on current screen size once DOM is ready
     if (shouldUseLottie()) {
-        initLottie();
+        scheduleLazyLoad(initLottie);
     } else {
-        initImageSequence();
+        scheduleLazyLoad(initImageSequence);
     }
 
     // Mouse follower effect
     const follower = document.getElementById('mouseFollower');
     const followerRect = follower.getBoundingClientRect();
-    
+
     document.addEventListener('mousemove', e => {
         follower.style.transform = `translate(${e.pageX - followerRect.width / 2}px, ${e.pageY - followerRect.height / 2}px)`;
     });
