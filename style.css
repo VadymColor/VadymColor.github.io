@@ -1,8 +1,8 @@
 body {
   position: relative;
   overflow: hidden;
-  margin:0 ;
-  padding:0 ;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -16,37 +16,61 @@ body {
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes moveVertical {
-	0% {top: 20vh;}
-  50% {top: 0vh;}
-  100% {top: 20vh}
+  0% {
+    top: 20vh;
+  }
+
+  50% {
+    top: 0vh;
+  }
+
+  100% {
+    top: 20vh
+  }
 }
 
 @keyframes moveHorizontal {
-	0% {top: 0vh; left: 0vw}
-  50% {top: -10vh; left: 50vw}
-  100% {top: 0vh; left: 0vw}
+  0% {
+    top: 0vh;
+    left: 0vw
+  }
+
+  50% {
+    top: -10vh;
+    left: 50vw
+  }
+
+  100% {
+    top: 0vh;
+    left: 0vw
+  }
 }
 
-@keyframes movelnCircle { 
+@keyframes movelnCircle {
   0% {
-  transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  50% { transform: rotate(180deg);
+
+  50% {
+    transform: rotate(180deg);
   }
+
   100% {
-transform: rotate(360deg); 
+    transform: rotate(360deg);
   }
 }
 
@@ -54,7 +78,9 @@ transform: rotate(360deg);
   font-family: 'KyivTypeSans';
   src: url(./fonts/KyivTypeSans-Black2.otf) format('opentype');
   font-weight: 900;
-  backdrop-filter: blur(20s);
+  /*backdrop-filter: blur(20s);*/
+  opacity: 100%;
+  color: #ffffff;
 }
 
 @font-face {
@@ -111,17 +137,18 @@ transform: rotate(360deg);
   0% {
     width: 0%;
   }
+
   100% {
     width: 100%;
   }
 }
 
 #movingbg1 {
-	position: fixed;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   /*transform: translate(-50%, -50%); /* Center the element vertically and horizontally */
-	z-index: 5;
+  z-index: 5;
 }
 
 #animation1 {
@@ -162,12 +189,12 @@ transform: rotate(360deg);
 }
 
 #movingbg {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #ce20f5);
-	background-size: 400% 400%;
-	animation: gradient 35s ease infinite;
-	height: 100vh;
-	width: 100hw;
-	z-index: -1;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #ce20f5);
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+  height: 100vh;
+  width: 100hw;
+  z-index: -1;
 }
 
 #movingbg::before {
@@ -189,12 +216,13 @@ transform: rotate(360deg);
   top: 1vh;
   width: 100vw;
   font-family: 'KyivTypeSansRegular', sans-serif;
-  font-size: 9vw; /* Adjust this value to make the text as big as you want */
+  font-size: 9vw;
+  /* Adjust this value to make the text as big as you want */
   z-index: 15;
   text-align: center;
-  color: aliceblue;
-  font-weight: 9000; 
-  opacity: 20%;
+  color: rgb(255, 255, 255);
+  font-weight: 9000;
+  opacity: 100%;
   /*filter: blur(5px);*/
 }
 
@@ -258,7 +286,7 @@ transform: rotate(360deg);
   animation: moveHorizontal 30s ease infinite;
 }
 
-  .g5 {
+.g5 {
   position: absolute;
   background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
   mix-blend-mode: var(--blending);
@@ -282,15 +310,15 @@ transform: rotate(360deg);
   padding: 0;
   margin: 0;
   font-family: 'KyivTypeSans', sans-serif;
-  font-size: 3vh;
-  color: rgb(187, 231, 233);
+  font-size: 5vh;
+  color: rgb(249, 245, 249);
   font-weight: 5000;
-  opacity: 50%;
+  opacity: 90%;
 }
 
 #linkblock a {
   font-family: 'KyivTypeSansRegular', sans-serif;
-  color:azure;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   line-height: 1.8;
   margin: 0 1em;
@@ -307,7 +335,7 @@ transform: rotate(360deg);
   #linkblock {
     font-size: 2.4vh;
   }
-  
+
   #linkblock a {
     margin: 0 0.5em;
   }
